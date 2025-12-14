@@ -2,13 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.psphilosbroker;
+package model;
+
+import controller.FrontController;
+import view.MainView;
 
 /**
  *
  * @author dam2_alu06@inf.ald
  */
-public class PspHilosBroker {
+public class Main {
 
     public static void main(String[] args) {
         //hacer en casa
@@ -31,6 +34,8 @@ public class PspHilosBroker {
         
         //--------------------------------- LÓGICA ---------------------------------
         
-        
+        MainView view = new MainView();
+        FrontController controller = new FrontController(view);
+        view.setVisible(true);
     }
 }
