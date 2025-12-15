@@ -4,6 +4,12 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import model.Agente;
+
 /**
  *
  * @author dam2_alu06@inf.ald
@@ -15,6 +21,8 @@ public class AgentsView extends javax.swing.JFrame {
      */
     public AgentsView() {
         initComponents();
+        modelList = new DefaultListModel<>();
+        agentsList.setModel(modelList);
     }
 
     /**
@@ -27,33 +35,114 @@ public class AgentsView extends javax.swing.JFrame {
     private void initComponents() {
 
         agentsLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        balanceLabel = new javax.swing.JLabel();
+        balanceTextField = new javax.swing.JTextField();
+        createAgentButton = new javax.swing.JButton();
+        agentsScrollPane = new javax.swing.JScrollPane();
+        agentsList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         agentsLabel.setText("Gestionar Agentes:");
+
+        nameLabel.setText("Nombre:");
+
+        balanceLabel.setText("Saldo Inicial:");
+
+        createAgentButton.setText("Crear Agente");
+
+        agentsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        agentsScrollPane.setViewportView(agentsList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(agentsLabel)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(createAgentButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(agentsLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(balanceLabel)
+                                    .addComponent(nameLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(balanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(agentsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(agentsLabel)
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel)
+                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(balanceLabel)
+                    .addComponent(balanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(createAgentButton)
+                .addGap(19, 19, 19))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(agentsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private DefaultListModel<String> modelList;
+    
+    public String getNombre() {
+        return nameTextField.getText();
+    }
+    
+    public double getSaldo() {
+        return Double.parseDouble(balanceTextField.getText());
+    }
+    
+    public void addCreateAgentButton(ActionListener al) {
+        createAgentButton.addActionListener(al);
+    }
+    
+    public void updateList(ArrayList<Agente> agentes) {
+        modelList.clear();
+        for(Agente agente : agentes) {
+            modelList.addElement(agente.toString());
+        }
+    }
+    
+    public void errors(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel agentsLabel;
+    private javax.swing.JList<String> agentsList;
+    private javax.swing.JScrollPane agentsScrollPane;
+    private javax.swing.JLabel balanceLabel;
+    private javax.swing.JTextField balanceTextField;
+    private javax.swing.JButton createAgentButton;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameTextField;
     // End of variables declaration//GEN-END:variables
 }

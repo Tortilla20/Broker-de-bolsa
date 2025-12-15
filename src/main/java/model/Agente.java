@@ -16,18 +16,19 @@ public class Agente {
     private long id;
     private String nombre;
     private double saldo;
-    private Operacion Operacion_Compra;
-    private Operacion Operacion_Venta;
+    //private Operacion Operacion_Compra;
+    //private Operacion Operacion_Venta;
 
-    public Agente(long id, String nombre, double saldo, Operacion Operacion_Compra, Operacion Operacion_Venta) {
+    //Operacion Operacion_Compra, Operacion Operacion_Venta
+    public Agente(long id, String nombre, double saldo) {
         this.id = id;
         this.nombre = nombre;
         this.saldo = saldo;
-        this.Operacion_Compra = Operacion_Compra;
-        this.Operacion_Venta = Operacion_Venta;
+        //this.Operacion_Compra = Operacion_Compra;
+        //this.Operacion_Venta = Operacion_Venta;
     }
     //(Agente this) -> es la referencia
-    public boolean nuevaOperacion(String tipo, double limite, double cantidad) {
+    /*public boolean nuevaOperacion(String tipo, double limite, double cantidad) {
         switch (tipo) {
                 case "compra":
                     //crear una operacion y asignarla a compra
@@ -46,7 +47,7 @@ public class Agente {
                 default: return false;
         }
         return true;
-    } 
+    }*/
 
     public long getId() {
         return id;
@@ -72,7 +73,7 @@ public class Agente {
         this.saldo = saldo;
     }
 
-    public Operacion getOperacion_Compra() {
+    /*public Operacion getOperacion_Compra() {
         return Operacion_Compra;
     }
 
@@ -86,7 +87,7 @@ public class Agente {
 
     public void setOperacion_Venta(Operacion Operacion_Venta) {
         this.Operacion_Venta = Operacion_Venta;
-    }
+    }*/
 
     @Override
     public int hashCode() {
@@ -108,5 +109,10 @@ public class Agente {
         }
         final Agente other = (Agente) obj;
         return this.id == other.id;
+    }
+    
+    @Override
+    public String toString() {
+        return nombre + " - " + saldo;
     }
 }
