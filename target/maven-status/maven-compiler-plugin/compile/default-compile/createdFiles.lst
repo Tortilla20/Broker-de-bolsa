@@ -1,4 +1,5 @@
 view\OperationsView.class
+controller\OperationsController$1.class
 model\ListaAgentes.class
 controller\FrontController$2.class
 model\Agente.class
@@ -8,6 +9,7 @@ controller\AgentsController.class
 controller\OperationsController.class
 model\Main.class
 model\Operacion.class
+view\OperationsView$1.class
 controller\FrontController$4.class
 view\MainView.class
 view\AgentsView$1.class

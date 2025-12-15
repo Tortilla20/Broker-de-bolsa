@@ -4,6 +4,13 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import model.Agente;
+import model.Operacion;
+
 /**
  *
  * @author dam2_alu06@inf.ald
@@ -13,8 +20,12 @@ public class OperationsView extends javax.swing.JFrame {
     /**
      * Creates new form operationsFrame
      */
+    
+    private DefaultListModel modelList;
     public OperationsView() {
         initComponents();
+        modelList = new DefaultListModel<>();
+        operationsList.setModel(modelList);
     }
 
     /**
@@ -26,34 +37,162 @@ public class OperationsView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         operationsLabel = new javax.swing.JLabel();
+        selectAgentsComboBox = new javax.swing.JComboBox<>();
+        buysRadioButton = new javax.swing.JRadioButton();
+        salesRadioButton = new javax.swing.JRadioButton();
+        priceTextField = new javax.swing.JTextField();
+        amountTextField = new javax.swing.JTextField();
+        precieLabel = new javax.swing.JLabel();
+        amountLabel = new javax.swing.JLabel();
+        createOperationButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        operationsList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         operationsLabel.setText("Gestionar Operaciones:");
+
+        selectAgentsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        buttonGroup1.add(buysRadioButton);
+        buysRadioButton.setText("Compra");
+
+        buttonGroup1.add(salesRadioButton);
+        salesRadioButton.setText("Venta");
+
+        precieLabel.setText("Precio:");
+
+        amountLabel.setText("Cantidad:");
+
+        createOperationButton.setText("Crear Operacion");
+
+        operationsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(operationsList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(operationsLabel)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(operationsLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(selectAgentsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(buysRadioButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(salesRadioButton))
+                            .addComponent(createOperationButton, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(precieLabel)
+                                    .addComponent(amountLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(amountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(operationsLabel)
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(selectAgentsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buysRadioButton)
+                            .addComponent(salesRadioButton))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(precieLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(amountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(amountLabel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(createOperationButton)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setAgents(ArrayList<Agente> agentes) {
+        selectAgentsComboBox.removeAllItems();
+        for(Agente agente : agentes) {
+            selectAgentsComboBox.addItem(agente.getNombre());
+        }
+    }
+    
+    public String getAgenteSeleccionado() {
+        return (String) selectAgentsComboBox.getSelectedItem();
+    }
+
+    public String getTipoOperacion() {
+        return buysRadioButton.isSelected() ? "compra" : "venta";
+    }
+
+    public double getPrecio() {
+        return Double.parseDouble(priceTextField.getText());
+    }
+
+    public double getCantidad() {
+        return Double.parseDouble(amountTextField.getText());
+    }
+
+    public void addCreateOperacionButton(ActionListener al) {
+        createOperationButton.addActionListener(al);
+    }
+
+    public void actualizarLista(Agente agente) {
+        modelList.clear();
+        if(agente.getOperacionCompra() != null) {
+            modelList.addElement(agente.getOperacionCompra().toString());
+        }
+        if(agente.getOperacionVenta() != null) {
+            modelList.addElement(agente.getOperacionVenta().toString());
+        }
+    }
+
+    public void errors(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amountLabel;
+    private javax.swing.JTextField amountTextField;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton buysRadioButton;
+    private javax.swing.JButton createOperationButton;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel operationsLabel;
+    private javax.swing.JList<String> operationsList;
+    private javax.swing.JLabel precieLabel;
+    private javax.swing.JTextField priceTextField;
+    private javax.swing.JRadioButton salesRadioButton;
+    private javax.swing.JComboBox<String> selectAgentsComboBox;
     // End of variables declaration//GEN-END:variables
 }

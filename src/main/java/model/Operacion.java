@@ -8,7 +8,7 @@ package model;
  *
  * @author dam2_alu06@inf.ald
  */
-class Operacion implements Runnable {
+public class Operacion implements Runnable {
     private String tipo;
     private double limite;
     private double cantidad;
@@ -56,6 +56,9 @@ class Operacion implements Runnable {
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Tipo: " + tipo + " - Cantidad: " + cantidad + " - Limite: " + limite;
+    }
 }

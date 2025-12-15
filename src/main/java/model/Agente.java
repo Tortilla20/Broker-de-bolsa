@@ -16,38 +16,32 @@ public class Agente {
     private long id;
     private String nombre;
     private double saldo;
-    //private Operacion Operacion_Compra;
-    //private Operacion Operacion_Venta;
+    private Operacion Operacion_Compra;
+    private Operacion Operacion_Venta;
 
     //Operacion Operacion_Compra, Operacion Operacion_Venta
     public Agente(long id, String nombre, double saldo) {
         this.id = id;
         this.nombre = nombre;
         this.saldo = saldo;
-        //this.Operacion_Compra = Operacion_Compra;
-        //this.Operacion_Venta = Operacion_Venta;
+        this.Operacion_Compra = null;
+        this.Operacion_Venta = null;
     }
     //(Agente this) -> es la referencia
-    /*public boolean nuevaOperacion(String tipo, double limite, double cantidad) {
-        switch (tipo) {
-                case "compra":
-                    //crear una operacion y asignarla a compra
-                    if(Operacion_Compra.equals(null)) {
-                        Operacion_Compra = new Operacion(tipo, limite, cantidad);
-                    } else {
-                        System.out.println("Ya existe una operacion de compra para el agente " + getNombre());
-                        return false;
-                    }  
-                break;
-                
-                case "venta":
-                    //crear una operacion y asignarla a venta
-                break;
-                
-                default: return false;
+    public boolean nuevaOperacion(Operacion operacion) {
+        if(operacion.getTipo().equalsIgnoreCase("compra")) {
+            if(Operacion_Compra != null) 
+            return false;
+            Operacion_Compra = operacion;
+        } else if(operacion.getTipo().equalsIgnoreCase("venta")) {
+            if(Operacion_Venta != null)
+            return false;
+            Operacion_Venta = operacion;
+        } else {
+            return false;
         }
         return true;
-    }*/
+    }
 
     public long getId() {
         return id;
@@ -113,6 +107,13 @@ public class Agente {
     
     @Override
     public String toString() {
-        return nombre + " - " + saldo;
+        return id + " - " + nombre + " - " + saldo;
+    }
+    
+    public Operacion getOperacionCompra() { 
+        return Operacion_Compra; 
+    }
+    public Operacion getOperacionVenta() { 
+        return Operacion_Venta; 
     }
 }
