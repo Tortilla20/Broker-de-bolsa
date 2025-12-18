@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JPanel;
+import org.knowm.xchart.*;
 
 /**
  *
@@ -13,8 +18,29 @@ public class GraphicView extends javax.swing.JFrame {
     /**
      * Creates new form GraphicFrame
      */
+    
+    private XYChart chart;
+    private XChartPanel<XYChart> chartPanel;  
+    private JPanel panel;
+    private BorderLayout borderLayout;
+    
     public GraphicView() {
         initComponents();
+        List<Integer> x = new ArrayList<>();
+        List<Double> y = new ArrayList<>();
+        
+        for (int i = 0; i < 10; i++) {
+            x.add(i);
+            y.add(100 + Math.random() * 10);
+        }
+        chart = new XYChartBuilder().width(600).height(400).title("Grafica: ").xAxisTitle("Tiempo").yAxisTitle("Precio").build();
+        chart.addSeries("Precio", x, y);
+        chartPanel = new XChartPanel<>(chart);
+        
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(chartPanel, java.awt.BorderLayout.CENTER);
+        //panel.setLayout(borderLayout);
+        //panel.add(chartPanel, borderLayout.CENTER);
     }
 
     /**
@@ -26,11 +52,23 @@ public class GraphicView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        graphicLabel = new javax.swing.JLabel();
+        graphicTabbedPane = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        graphicLabel.setText("Gráfica:");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 379, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 252, Short.MAX_VALUE)
+        );
+
+        graphicTabbedPane.addTab("Graphic", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -38,21 +76,24 @@ public class GraphicView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(graphicLabel)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addComponent(graphicTabbedPane)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(graphicLabel)
-                .addGap(0, 283, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(graphicTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel graphicLabel;
+    private javax.swing.JTabbedPane graphicTabbedPane;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
