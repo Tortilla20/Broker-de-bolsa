@@ -5,7 +5,9 @@
 package model;
 
 import controller.FrontController;
+import java.util.ArrayList;
 import view.MainView;
+import view.OperationsView;
 
 /**
  *
@@ -35,7 +37,10 @@ public class Main {
         //--------------------------------- LÓGICA ---------------------------------
         
         MainView view = new MainView();
+        //OperationsView operations = new OperationsView();
+        //operations.setAgents(new ArrayList<>(ListaAgentes.getAgentes()));
         FrontController controller = new FrontController(view);
         view.setVisible(true);
+        //operations.setVisible(true);
     }
 }

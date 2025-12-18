@@ -51,7 +51,8 @@ public class AgentsController {
                 ListaAgentes.anhadirAgente(agente);
                 
                 //ACTUALIZAR VISTA
-                view.updateList(ListaAgentes.getAgentes());
+                //view.updateList(ListaAgentes.getAgentes());
+                view.updateList(new ArrayList<>(ListaAgentes.getAgentes()));
             }
         };
         return al;

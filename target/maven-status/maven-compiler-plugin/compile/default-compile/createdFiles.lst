@@ -7,6 +7,8 @@ controller\AgentsController$1.class
 controller\FrontController$1.class
 controller\AgentsController.class
 controller\OperationsController.class
+controller\Persistence.class
+controller\Persistence$1.class
 model\Main.class
 model\Operacion.class
 view\OperationsView$1.class

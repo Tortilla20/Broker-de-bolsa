@@ -4,6 +4,7 @@
  */
 package model;
 
+import controller.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,12 @@ import java.util.List;
  */
 public class ListaAgentes {
     
-    private static ArrayList<Agente> agentes = new ArrayList<>();
-
-    public static ArrayList<Agente> getAgentes() {
+    //BORRAR LINEAS EN PROPIEDADES - RUN - VM OPTIONS
+    
+    //private static ArrayList<Agente> agentes = new ArrayList<>();
+    //private static List<Agente> agentes = Persistence.cargarAgentes();
+    private static List<Agente> agentes = new ArrayList<>();
+    public static List<Agente> getAgentes() {
         return agentes;
     }
 
@@ -25,6 +29,7 @@ public class ListaAgentes {
 
     public static void anhadirAgente(Agente agente) {
         agentes.add(agente);
+        Persistence.guardarAgentes(agentes);
     }
     
     public static boolean existeNombre(String nombre) {
@@ -34,5 +39,10 @@ public class ListaAgentes {
             }
         }
         return false;
+    }
+    
+    // GUARDAR AGENTE EN ARCHIVO
+    public static void actualizar() {
+        Persistence.guardarAgentes(agentes);
     }
 }

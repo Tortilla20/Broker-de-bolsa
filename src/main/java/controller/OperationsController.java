@@ -6,6 +6,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import model.Agente;
 import model.ListaAgentes;
 import model.Operacion;
@@ -20,7 +21,7 @@ public class OperationsController {
 
     public OperationsController(OperationsView view) {
         this.view = view;
-        this.view.setAgents(ListaAgentes.getAgentes());
+        this.view.setAgents(new ArrayList<>(ListaAgentes.getAgentes()));
         //ACTIVAR FUNCIONALIDAD BOTON
         this.view.addCreateOperacionButton(this.createOperationListener());
     }
@@ -70,6 +71,7 @@ public class OperationsController {
                 
                 //ACTUALIZAR
                 view.actualizarLista(agenteObject);
+                ListaAgentes.actualizar();
             }
         };
         return al;
