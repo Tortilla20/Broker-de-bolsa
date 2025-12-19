@@ -29,12 +29,12 @@ La app incluye las siguientes ventanas:
 1. Crear Agente
 2. Crear Operación
 3. Ver Gráfica
-4. Salir (con la opción de teclado Control+Q)
+**4. Salir** (con la opción de teclado Control+Q)
 
 - **Arquitectura:**
-**1. Modelo:** Contiene la clase Agente, Broker, ListaAgentes, Main, Operacion, PrecioDeLaAccion
-**2. View:** VistaAgente, VistaPrincipal, VistaDeLaGrafica y VistaAgente
-**3. Controlador:** ControladorAgente, ControladorFrontal, ControladorDeLaGrafica, ControladorDeLaOperacion y Persistencia
+1. Modelo: Contiene la clase Agente, Broker, ListaAgentes, Main, Operacion, PrecioDeLaAccion
+2. View: VistaAgente, VistaPrincipal, VistaDeLaGrafica y VistaAgente
+3. Controlador: ControladorAgente, ControladorFrontal, ControladorDeLaGrafica, ControladorDeLaOperacion y Persistencia
 >En la propia aplicación, muchos de estos nombres están en inglés y otros en español
 ---
 
