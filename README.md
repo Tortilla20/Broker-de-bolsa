@@ -42,7 +42,7 @@ La app incluye las siguientes ventanas:
 Intenté implementar, como se ve en el código, la persistencia de datos de agentes mediante la clase **Persistence** usando Gson,
 para guardar y cargar agentes desde archivos con la extensión **JSON**.
 Dicha persistencia no fue terminada ya que me dió muchos problemas a la hora de la ejecución del programa, el código está en la
-propia app o comentado para ver que se "intento implementar" pero este punto estária incompleto
+propia app o comentado para ver que se "intento implementar" pero este punto estaría incompleto
 
 ---
 
