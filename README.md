@@ -5,6 +5,8 @@ Este proyecto simula un sistema de operaciones de compra y venta de acciones med
 La app está desarrollada en el IDE Netbeans utilizando Swing para la interfaz de la aplicación y usa hilos para gestionar las
 operaciones dichas anteriormente
 
+---
+
 ### Funcionalidades
 - **Agentes:**
 Permite crear agentes con un nombre y un salario inicial. Estos agentes realizarán mas adelante las operaciones de compra y venta
