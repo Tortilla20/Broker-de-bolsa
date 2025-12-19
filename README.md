@@ -10,12 +10,18 @@ operaciones dichas anteriormente
 ### Funcionalidades
 - **Agentes:**
 Permite crear agentes con un nombre y un salario inicial. Estos agentes realizarán mas adelante las operaciones de compra y venta
-(IMAGEN)
+
+<p align="center">
+  <img src="mediaReadme/VentanaAgentes.png" alt="Alt">
+</p>
 
 - **Operaciones:**
 Los agentes pueden crear la operaciones tipo, con la cantidad y el límite de precio.
 Las operaciones se realizan de forma "automática" cuando el broker cumple las condiciones
-(IMAGEN)
+
+<p align="center">
+  <img src="mediaReadme/VentanaOperaciones.png" alt="Alt">
+</p>
 
 - **Interfaz:**
 La app incluye las siguientes ventanas:
@@ -25,11 +31,10 @@ La app incluye las siguientes ventanas:
 4. Salir (con la opción de teclado Control+Q)
 
 - **Arquitectura:**
-(MUCHOS DE ESTOS NOMBRES ESTÁN EN INGLÉS Y OTROS EN ESPAÑOL)
 1. Modelo -> Contiene la clase Agente, Broker, ListaAgentes, Main, Operacion, PrecioDeLaAccion
 2. View -> VistaAgente, VistaPrincipal, VistaDeLaGrafica y VistaAgente
 3. Controlador -> ControladorAgente, ControladorFrontal, ControladorDeLaGrafica, ControladorDeLaOperacion y Persistencia
-
+>En la propia aplicación, muchos de estos nombres están en inglés y otros en español
 ---
 
 ### ERRORES:
