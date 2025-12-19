@@ -29,7 +29,7 @@ La app incluye las siguientes ventanas:
 1. **Crear Agente**
 2. **Crear Operación**
 3. **Ver Gráfica**
-4. **Salir** (con la opción de teclado Control+Q)
+4. **Salir** (con la implementación del atajo de teclado Ctrl+Q)
 
 - **Arquitectura:**
 1. **Modelo:** Contiene la clase Agente, Broker, ListaAgentes, Main, Operacion, PrecioDeLaAccion
