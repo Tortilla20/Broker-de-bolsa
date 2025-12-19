@@ -1,6 +1,5 @@
 <h1 align="center">Broker de Bolsa</h1>
 <p align="center">Iván Duro Fernández</p>
----
 
 ## Descripción breve del proyecto
 Este proyecto simula un sistema de operaciones de compra y venta de acciones mediante **agentes** y **broker**.
