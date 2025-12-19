@@ -13,12 +13,17 @@ public class Operacion implements Runnable {
     private double limite;
     private double cantidad;
     private Thread hiloEjecutor;
+    private Agente agente;
+    private Broker broker;
 
     //usar metodos geters y seters en el constructor
-    public Operacion(String tipo, double limite, double cantidad) {
+    public Operacion(String tipo, double limite, double cantidad, Agente agente, Broker broker) {
         setTipo(tipo);
         this.limite = limite;
         this.cantidad = cantidad;
+        this.agente = agente;
+        this.broker = broker;
+        //OPERACION SE EJECUTA EN SU HIJO
         hiloEjecutor = new Thread(this);
         hiloEjecutor.start();
     }
@@ -29,6 +34,22 @@ public class Operacion implements Runnable {
             //comprobar el precio de broker en bucle
             //SI    PEDIR EL LOCK SUMAR O RESTAR LIBERAR EL LOCK
             //NO    ME DUERMO
+        boolean comprobar = false;
+        //CONSULTAR PRECIO
+        while(!comprobar) {
+            //MIRAR EL PRECIO ACTUAL
+            int precioActual = broker.getPrecioActual();
+            if(tipo.equalsIgnoreCase("compra") && precioActual <= limite || tipo.equalsIgnoreCase("venta") && precioActual >= limite) {
+                broker.ejecutarLaOperacion(this);
+                comprobar = true;
+            } else {
+                try {
+                    Thread.sleep(500);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
     }
 
     public String getTipo() {
@@ -55,6 +76,30 @@ public class Operacion implements Runnable {
 
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public Thread getHiloEjecutor() {
+        return hiloEjecutor;
+    }
+
+    public void setHiloEjecutor(Thread hiloEjecutor) {
+        this.hiloEjecutor = hiloEjecutor;
+    }
+
+    public Agente getAgente() {
+        return agente;
+    }
+
+    public void setAgente(Agente agente) {
+        this.agente = agente;
+    }
+
+    public Broker getBroker() {
+        return broker;
+    }
+
+    public void setBroker(Broker broker) {
+        this.broker = broker;
     }
 
     @Override

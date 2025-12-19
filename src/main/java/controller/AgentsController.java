@@ -7,6 +7,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Agente;
 import model.ListaAgentes;
 import view.AgentsView;
@@ -32,17 +33,17 @@ public class AgentsController {
                 double saldo = view.getSaldo();
                 
                 if(nombre == null ||nombre.isBlank()) {
-                    view.errors("El nombre no puede estar vacio");
+                    JOptionPane.showMessageDialog(view, "El nombre no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 
                 if(ListaAgentes.existeNombre(nombre)) {
-                    view.errors("Ya existe un agente con ese nombre");
+                    JOptionPane.showMessageDialog(view, "Ya existe un agente con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 
                 if(saldo < 0) {
-                    view.errors("El saldo no puede ser negativo");
+                    JOptionPane.showMessageDialog(view, "El saldo no puede ser negativo", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 

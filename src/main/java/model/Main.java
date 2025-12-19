@@ -39,8 +39,10 @@ public class Main {
         MainView view = new MainView();
         //OperationsView operations = new OperationsView();
         //operations.setAgents(new ArrayList<>(ListaAgentes.getAgentes()));
-        FrontController controller = new FrontController(view);
-        view.setVisible(true);
         //operations.setVisible(true);
+        PrecioDeLaAccion precio = new PrecioDeLaAccion(100);
+        Broker broker = new Broker(precio);
+        FrontController controller = new FrontController(view, broker);
+        view.setVisible(true);
     }
 }

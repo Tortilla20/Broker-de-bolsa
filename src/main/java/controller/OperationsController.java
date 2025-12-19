@@ -7,7 +7,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Agente;
+import model.Broker;
 import model.ListaAgentes;
 import model.Operacion;
 import view.OperationsView;
@@ -18,9 +20,11 @@ import view.OperationsView;
  */
 public class OperationsController {
     private OperationsView view;
+    private Broker broker;
 
-    public OperationsController(OperationsView view) {
+    public OperationsController(OperationsView view, Broker broker) {
         this.view = view;
+        this.broker = broker;
         this.view.setAgents(new ArrayList<>(ListaAgentes.getAgentes()));
         //ACTIVAR FUNCIONALIDAD BOTON
         this.view.addCreateOperacionButton(this.createOperationListener());
@@ -36,12 +40,12 @@ public class OperationsController {
                 double cantidad = view.getCantidad();
                 
                 if(nombreAgente == null) {
-                    view.errors("Tienes que seleccionar un agente");
+                    JOptionPane.showMessageDialog(view, "Tienes que seleccionar un agente", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 
                 if(precio <= 0 || cantidad <= 0) {
-                    view.errors("El precio y la cantidad deben de ser positivos");
+                    JOptionPane.showMessageDialog(view, "El precio y la cantidad deben de ser positivos", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 
@@ -55,21 +59,21 @@ public class OperationsController {
                 }
 
                 //CREAR OPERACION
+                                
+                if(agenteObject == null) {
+                    JOptionPane.showMessageDialog(view, "Agente no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 
-                Operacion operacion = new Operacion(tipo, precio, cantidad);
+                Operacion operacion = new Operacion(tipo, precio, cantidad, agenteObject, broker);
                 boolean creacionOperacion = agenteObject.nuevaOperacion(operacion);
                 
-                if(agenteObject == null) {
-                    view.errors("Agente no encontrado");
-                    return;
-                }
-                
                 if(!creacionOperacion) {
-                    view.errors("El agente ya tiene una operacion");
+                    JOptionPane.showMessageDialog(view, "El agente ya tiene una operacion", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 
-                //ACTUALIZAR
+                //ACTUALIZAR LA INTERFAZ
                 view.actualizarLista(agenteObject);
                 ListaAgentes.actualizar();
             }

@@ -6,6 +6,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Broker;
 import view.AgentsView;
 import view.GraphicView;
 import view.MainView;
@@ -19,9 +20,11 @@ import view.OperationsView;
 public class FrontController {
     
     private MainView view;
+    private Broker broker;
 
-    public FrontController(MainView view) {
+    public FrontController(MainView view, Broker broker) {
         this.view = view;
+        this.broker = broker;
         this.view.QuitMenutItemListener(this.quitMenuItemListener());
         this.view.GraphicsMenuItem(this.graphicListener());
         this.view.AgentsMenuItemActionListener(this.agentsListener());
@@ -67,7 +70,7 @@ public class FrontController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 OperationsView ov = new OperationsView();
-                OperationsController oc = new OperationsController(ov);
+                OperationsController oc = new OperationsController(ov, broker);
                 ov.setVisible(true);
             }
         };

@@ -13,10 +13,12 @@ model\Main.class
 model\Operacion.class
 view\OperationsView$1.class
 controller\FrontController$4.class
+model\Broker.class
 view\MainView.class
 view\AgentsView$1.class
 view\AgentsView.class
 controller\FrontController.class
+model\PrecioDeLaAccion.class
 controller\FrontController$3.class
 controller\GraphicController.class
 view\GraphicView.class

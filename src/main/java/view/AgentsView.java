@@ -130,10 +130,6 @@ public class AgentsView extends javax.swing.JFrame {
             modelList.addElement(agente.toString());
         }
     }
-    
-    public void errors(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel agentsLabel;
