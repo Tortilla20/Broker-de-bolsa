@@ -1,5 +1,5 @@
 <h1 align="center">Broker de Bolsa</h1>
-<h3 align=center">Iván Duro Fernández</h3>
+<h3 align="center">Iván Duro Fernández</h3>
 ## Descripción breve del proyecto
 Este proyecto simula un sistema de operaciones de compra y venta de acciones mediante **agentes** y **broker**.
 La app está desarrollada en el IDE Netbeans utilizando Swing para la interfaz de la aplicación y usa hilos para gestionar las
