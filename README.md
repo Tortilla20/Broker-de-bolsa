@@ -1,4 +1,4 @@
-#PSP - Broker de bolsa - Iván Duro Fernández
+# PSP - Broker de bolsa - Iván Duro Fernández
 
 ## Descripción breve del proyecto
 Este proyecto simula un sistema de operaciones de compra y venta de acciones mediante **agentes** y **broker**.
@@ -30,11 +30,15 @@ La app incluye las siguientes ventanas:
 2. View -> VistaAgente, VistaPrincipal, VistaDeLaGrafica y VistaAgente
 3. Controlador -> ControladorAgente, ControladorFrontal, ControladorDeLaGrafica, ControladorDeLaOperacion y Persistencia
 
+---
+
 - **ERRORES:**
 Intenté implementar, como se ve en el código, la persistencia de datos de agentes mediante la clase **Persistence** usando Gson,
 para guardar y cargar agentes desde archivos con la extensión **JSON**.
 Dicha persistencia no fue terminada ya que me dió muchos problemas a la hora de la ejecución del programa, el código está en la
 propia app o comentado para ver que se "intento implementar" pero este punto estária incompleto
+
+---
 
 ### Requisistos
 - Java 17 o superior
