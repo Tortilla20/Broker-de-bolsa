@@ -1,4 +1,4 @@
-# PSP - Broker de bolsa - Iván Duro Fernández
+<h1 align="center">PSP - Broker de bolsa - Iván Duro Fernández</h1>
 
 ## Descripción breve del proyecto
 Este proyecto simula un sistema de operaciones de compra y venta de acciones mediante **agentes** y **broker**.
